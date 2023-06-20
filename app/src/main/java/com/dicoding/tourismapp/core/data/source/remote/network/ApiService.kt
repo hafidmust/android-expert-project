@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("list")
-    fun getList() : Call<ListTourismResponse>
+    suspend fun getList() : ListTourismResponse
 }

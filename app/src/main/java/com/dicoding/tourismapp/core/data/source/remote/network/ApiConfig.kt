@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class ApiConfig(context: Context) {
+object ApiConfig {
 
     private fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
@@ -19,16 +19,16 @@ class ApiConfig(context: Context) {
             .build()
     }
 
-    val okHttpClientChucker = OkHttpClient.Builder()
-        .addInterceptor(
-            ChuckerInterceptor.Builder(context)
-                .collector(ChuckerCollector(context))
-                .maxContentLength(250000L)
-                .redactHeaders(emptySet())
-                .alwaysReadResponseBody(false)
-                .build()
-        )
-        .build()
+//    val okHttpClientChucker = OkHttpClient.Builder()
+//        .addInterceptor(
+//            ChuckerInterceptor.Builder(context)
+//                .collector(ChuckerCollector(context))
+//                .maxContentLength(250000L)
+//                .redactHeaders(emptySet())
+//                .alwaysReadResponseBody(false)
+//                .build()
+//        )
+//        .build()
 
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()

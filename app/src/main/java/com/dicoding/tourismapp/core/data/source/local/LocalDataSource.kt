@@ -4,17 +4,20 @@ import androidx.lifecycle.LiveData
 import com.dicoding.tourismapp.core.data.source.local.entity.TourismEntity
 import com.dicoding.tourismapp.core.data.source.local.room.TourismDao
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalDataSource private constructor(private val tourismDao: TourismDao) {
+@Singleton
+class LocalDataSource @Inject constructor(private val tourismDao: TourismDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(tourismDao: TourismDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(tourismDao)
-            }
-    }
+//    companion object {
+//        private var instance: LocalDataSource? = null
+//
+//        fun getInstance(tourismDao: TourismDao): LocalDataSource =
+//            instance ?: synchronized(this) {
+//                instance ?: LocalDataSource(tourismDao)
+//            }
+//    }
 
     fun getAllTourism(): Flow<List<TourismEntity>> = tourismDao.getAllTourism()
 

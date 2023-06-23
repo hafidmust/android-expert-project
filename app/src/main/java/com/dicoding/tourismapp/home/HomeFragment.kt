@@ -8,29 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.tourismapp.MyApplication
 import com.dicoding.tourismapp.R
 import com.dicoding.tourismapp.core.data.Resource
 import com.dicoding.tourismapp.core.ui.TourismAdapter
-import com.dicoding.tourismapp.core.ui.ViewModelFactory
 import com.dicoding.tourismapp.databinding.FragmentHomeBinding
 import com.dicoding.tourismapp.detail.DetailTourismActivity
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var factory : ViewModelFactory
+//    @Inject
+//    lateinit var factory : ViewModelFactory
 
-    private val homeViewModel : HomeViewModel by viewModels {
-        factory
-    }
+    private val homeViewModel : HomeViewModel by viewModels()
 
 
 
@@ -44,7 +40,7 @@ class HomeFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as MyApplication).appComponent.inject(this)
+//        (requireActivity().application as MyApplication).appComponent.inject(this)
 
     }
 
